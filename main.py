@@ -20,6 +20,18 @@ testdb = [
     },
     {
         "item_name": "Foo5"
+    },
+    {
+        "item_name": "Foo6"
+    },
+    {
+        "item_name": "Foo7"
+    },
+    {
+        "item_name": "Foo8"
+    },
+    {
+        "item_name": "Foo9"
     }
 ]
 
@@ -80,3 +92,9 @@ async def view_video(video_id: int):
 @app.get("/items")
 async def read_items(skip: int = 0, limit: int = 4):
     return testdb[skip: skip + limit]
+
+
+@app.get("/items/{item_id}")
+async def read_user_item(item_id: str, needy: str, skip: int = 0, limit: int | None = None):
+    item = {"item_id": item_id, "needy": needy, "skip": skip, "limit": limit}
+    return item
