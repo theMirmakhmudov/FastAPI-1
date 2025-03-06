@@ -5,6 +5,25 @@ app = FastAPI()
 
 video_db = {}
 
+testdb = [
+    {
+        "item_name": "Foo1"
+    },
+    {
+        "item_name": "Foo2"
+    },
+    {
+        "item_name": "Foo3"
+    },
+    {
+        "item_name": "Foo4"
+    },
+    {
+        "item_name": "Foo5"
+    }
+]
+
+
 @app.get('/')
 async def root():
     return {'message': 'Welcome to the FastAPI API!'}
@@ -56,3 +75,8 @@ async def view_video(video_id: int):
         "video_id": video_id,
         "total_views": video_db[video_id]["views"]
     }
+
+
+@app.get("/items")
+async def read_items(skip: int = 0, limit: int = 4):
+    return testdb[skip: skip + limit]
