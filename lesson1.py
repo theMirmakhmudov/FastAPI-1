@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from models import Users
+from models1 import Users
 
 app = FastAPI()
 
